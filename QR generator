@@ -1,0 +1,5 @@
+import pyqrcode                            #pip install pyqrcode
+from pyqrcode import QRCode 
+link = "https://youtu.be/z0rvwlP7L3I" #Link that is to be converted to QR code
+QR = pyqrcode.create(link)   
+QR.svg("QRcodeYTvideo.svg", scale = 8) #save qr code in the folder in which the file exists
