@@ -1,26 +1,15 @@
 import numpy as np
-
-# Define parameters
 image_size = 8
 kernel_size = 3
 stride = 2
 channel_number = 256  # Assuming RGB image
 layers=22
-# Create an 8x8x3 image matrix with random int8 values
 image_matrix = np.random.randint(low=-128, high=127, size=(image_size, image_size, channel_number), dtype=np.int8)
-
-# Calculate output size
 output_size = ((image_size - kernel_size) // stride) + 1
-
-# Function to calculate buffer size for each layer
 def calculate_layer_buffer_size(input_shape, kernel_size, stride):
     output_size = ((input_shape - kernel_size) // stride) + 1
     return output_size * output_size * channel_number
-
-# Initialize total buffer size
 total_buffer_size = 0
-
-# Iterate over layers to calculate buffer size
 for layer in range(layers):
     layer_buffer_size = calculate_layer_buffer_size(image_size, kernel_size, stride)
     total_buffer_size += layer_buffer_size
